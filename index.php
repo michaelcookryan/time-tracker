@@ -5,7 +5,7 @@
     <head>
         <title>T=0 Project Time Log</title>
 
-        <link type="text/css" rel="stylesheet" href="css/style.css" />
+        <link type="text/css" rel="stylesheet" href="style.css" />
 
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,100,200|Comfortaa:400,300|' rel='stylesheet' type='text/css'>
 
