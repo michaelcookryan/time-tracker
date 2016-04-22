@@ -1,0 +1,30 @@
+ /*STYLESHEET FOR TIMECLOCK LOG*/
+
+ body {
+
+ 		font-family: 'Raleway', sans serif;
+ 		font-weight: 400;
+ 		background-color: silver
+ 		;
+ }
+
+ h1 {
+
+ 	font-family: 'Comfortaa' sans serif;
+ 	font-weight: 400;
+ 	text-align: center;
+ 	color:white;
+ 	text-shadow: 2px 2px 2px black;
+ 	background-color:purple;
+ 	padding:2%;
+ 	
+ }
+
+ section {
+
+ 	background-color: white;
+ 	border-radius: 10px;
+ 	padding:1%;
+ 	width:40%;
+ 	margin: 0 auto;
+ }
