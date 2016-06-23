@@ -80,7 +80,7 @@ if(isset($_SESSION['timerCounter'])) // confirm timer was started by checking ex
 
 	totalTimeToday($timeElapsed);
 
-echo "Work on: <div style=\"color:green; font-size:1.5em;\">" . $_SESSION['currentClientWork'] . "</div>" . " has been stopped at " . date('g:ia') . "<br>";
+echo "Work on: <div style=\"color:green; font-size:1.5em;\">" . urldecode($_SESSION['currentClientWork']) . "</div>" . " has been stopped at " . date('g:ia') . "<br>";
 
 
 echo "<form method='post' action='logout.php'>
