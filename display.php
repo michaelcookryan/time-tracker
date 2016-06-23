@@ -180,7 +180,7 @@ if(!empty($_POST['active']) || !empty($_POST['n'])) // confirm that something wa
 }else{ // nothing entered or selected
 
 	echo "No client entered or selected<br>";
-	echo "<a href='current.php'>Back to Client List Page</a>";
+	echo "<a href='index.php'>Back to Client List Page</a>";
 	exit;
 }
 ?>
