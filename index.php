@@ -5,7 +5,7 @@
     <head>
         <title>T=0 Project Time Log</title>
 
-        <link type="text/css" rel="stylesheet" href="style.css" />
+        <link type="text/css" rel="stylesheet" href="css/style.css" />
 
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,100,200|Comfortaa:400,300|' rel='stylesheet' type='text/css'>
 
@@ -19,12 +19,11 @@
 
 /*
 		AUTHOR: Michael Ryan 
-		DATE: 5-25-2014
+		DATE: 5-15-2016
 		FILE: index.php  
 		FILE DESCRIPTION: This is the index for a time clock to keep an acurate record of
-                            time and work performed for a client. It will display any client records
-                            (if they exist) at the beginning as well form fields - name and project
-                            to create a new file. Upon start the timer will begin.
+                            time and work performed for a client. It will display two links for user to select.
+                            One for viewing the current list of active clients and one to enter in a new client name and project.
  */
 
 
@@ -45,108 +44,119 @@ ob_start();
 
 /* Create radio button if info already exists in directory */
 
-function clientList($activeClient)
-{
+// function clientList($activeClient)
+// {
 
-    if(!empty($activeClient))  
-    {
-        echo "
+//     if(!empty($activeClient))  
+//     {
+//         echo "
         
-        <input type='radio'
-               name='active'
-               value='$activeClient'>
-               $activeClient
-                <br>  
-           ";
-        }
+//         <input type='radio'
+//                name='active'
+//                value='$activeClient'>
+//                $activeClient
+//                 <br>  
+//            ";
+//         }
 
-}
-
-
+// }
 
 
-/* If there are any files existing in the directory then create selection list */
 
-function confirmPreviousClientsList()
-{  
-        if(count(glob("clientDirectory"."/*")))
-        {
-            echo "<h4>Current List of Active Projects: </h4>";
 
-            if($handle = opendir('clientDirectory'))
-            {
-                while (false !== ($entry = readdir($handle)))
-                {
+/* Create selection list of all files within the directory */
+
+// function previousClientsList()
+// {  
+//        if(count(glob("clientDirectory"."/*"))){             //do files exist in clientDirectory?
+//             echo "<h4>Current List of Active Projects: </h4>";
+
+//             if($handle = opendir('clientDirectory'))        //opens the known directory
+//             {
+//                 while (false !== ($entry = readdir($handle)))       //loops through client names in direcetory
+//                 {
                    
                   
-                    if($entry != "." && $entry != ".." && $entry != ".DS_Store")
-                    {
+//                     if($entry != "." && $entry != ".." && $entry != ".DS_Store")
+//                     {
                         
-                            clientList(pathinfo($entry, PATHINFO_FILENAME));
+//                             clientList(pathinfo($entry, PATHINFO_FILENAME));        //isolated client name without file extension and display in selection list 
                         
-                    }
+//                     }
                 
 
-                }closedir($handle);
-            }
-        }
-}
+//                 }closedir($handle);
+//             }
+//         }
+// }
 
 
 
+/* Confirm files existing in the directory */
+
+// function confirmPreviousClientsList()
+// {
+//     if(count(glob("clientDirectory"."/*")))             //do files exist in clientDirectory?
+//         {
+//             previousClientsList();                  // show list of existing files
+//              echo "<br>";
+
+//              echo "<input 
+//                 type='submit' 
+//                 name='display' 
+//                 value='Display Records'>";
+//              echo "<br><br><br>";
+
+//         }//else{
+//         //     echo "<h4>The are no current projects.</h4>";
+//         // }
+// }
+
+// function selectCurrentClientList(){
+
+// echo "
+    
+//         <form method='post' action='current.php'>  
+                
+              
+//          <input 
+//                 type='submit' 
+//                 name='showList' 
+//                 value='Current Client List'>   
+                
+//        </form>";    
+
+// }
+
+
+
+// function selectNewClientForm(){
+
+// echo "<form method='post' action='newClient.php'>"; // start more work
+
+
+//      echo "<input 
+//                 type='submit' 
+//                 name='addClient' 
+//                 value='Add New Client & Project'> 
+    
+//     </form>";
+
+// }
 
 /* Create the form to enter a new client, as well display any active files already present in clientDirectory */
 
 
-function createForm($name,$project)
+function createForm()
 {
 
 echo "<hr>";
+    echo "<section>
+        <a href='current.php'>Current List of Clients</a>
+        <a href='newClient.php'>Add a New Client</a>
+    </section>";
 
-
-
-
-    echo "
-    <section>
-        <form method='post' action='display.php'>"; // display record for review or print
-                
-                confirmPreviousClientsList();
-                
-                echo "<input 
-                type='submit' 
-                name='display' 
-                value='Display Records'>
-                
-
-
-        </form>";                   // MAIN ISSUE: Two separte forms so if starting more work on existing project, input is not recognsied
-    echo "<br><br><br>";
-
-    echo "<form method='post' action='record.php'>"; // start more work
-    echo "<h4>Enter New Client Info:</h4>";
-
-     echo "Client:<input style='margin-left:40px' 
-                            type='text' 
-                            name='n'
-                            value='$name'><br>
-                        
-                            
-            Project:<input style='margin-left:29px' 
-                            type='text' 
-                            name='p'
-                            value='$project'><br><br>
-                            
-                            
-            
-                             
-            <input 
-                type='submit' 
-                name='startTimer' 
-                value='Start Work Timer'> 
     
-
-
-</form></section>";
 }
 
 
@@ -156,9 +166,9 @@ echo "<hr>";
 
 /********************** BODY ***************************************************/
 
-echo "<h1>Time Equals Nothing Project Timer and Work Log</h1><br>";
+echo "<h1>Time Equals Nothing Project: Timer and Work Log</h1><br>";
 
-createForm('','');
+createForm();
 
 ob_end_flush();
 
