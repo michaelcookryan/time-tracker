@@ -95,7 +95,7 @@ echo "<form method='post' action='logout.php'>
     echo       "<input 
                 type='submit' 
                 name='Logoff' 
-                value='Log Out'> 
+                value='Finish'> 
 		</form>";
 
 
