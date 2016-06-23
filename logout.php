@@ -24,7 +24,7 @@ ob_start();
 
 		$workLogFromToday = trim(date("D. M j Y")) . "," . trim($updates) . "," . trim($_SESSION['timeToday'])  . "," . $totalProjectTime;
                        
-             $updatedFilePath =  "clientDirectory/" . $_SESSION['currentClientWork'] . ".txt";
+             $updatedFilePath =  "clientDirectory/" . urldecode($_SESSION['currentClientWork']) . ".txt";
 
              $updatesToFile = @fopen($updatedFilePath, "a+") or die("No file exists for this client.");
 
