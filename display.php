@@ -137,10 +137,10 @@ if(!empty($_POST['active']) || !empty($_POST['n'])) // confirm that something wa
 	
 	}else */if(!empty($_POST['active']) && is_null($_POST['n']))  // recalling existing file and listing it's logged info into a table
 	{
-		$startThisFileAgain = $_POST['active']; //used to pass into input field below when calling record.php
+		$startThisFileAgain = urlencode($_POST['active']); //used to pass into input field below when calling record.php
 		//startTheClockForToday();
 
-		$_SESSION['currentClientWork'] = $_POST['active'];  	// for display use in endwork.php and logout.php
+		$_SESSION['currentClientWork'] = urlencode($_POST['active']);  	// for display use in endwork.php and logout.php
 		
 
 		$fileInUse =  file("clientDirectory/" . $_POST['active'] . ".txt");
@@ -200,7 +200,7 @@ if(!empty($_POST['active']) || !empty($_POST['n'])) // confirm that something wa
 		echo "</table>
 			<a href='javascript:window.print()'>Print This Page</a>";
 		echo "<br><br>";
-		echo "<a href='index.php'>Back to Main Page</a>";
+		echo "<a href='current.php'>Back to Client List Page</a>";
 		echo "<form method='post' action='record.php'>
 
 				<input 
@@ -223,19 +223,20 @@ if(!empty($_POST['active']) || !empty($_POST['n'])) // confirm that something wa
 		</form>";
 		//var_dump($startThisFileAgain);
 		var_dump($_POST['n']);
+		var_dump($_POST['active']);
 
 	}else if(!empty($_POST['active']) && isset($_POST['n']))  // both a new file and existing file are selected
 		
 		{
-			echo "You may only select an existing file or start a new one...not both.<br>";
-			echo "<a href='index.php'>Back to Main Page</a>";
+			echo "You may only select an existing file or start a new one...not both.<br>";		// THIS SECTION SHOULD BE REMOVED AS THERE IS NO LONGER A CHANCE TO BE ABLE TO SELECT BOTH
+			echo "<a href='current.php'>Back to Client List Page</a>";
 			exit;
 		}
 
 }else{ // nothing entered or selected
 
 	echo "No client entered or selected<br>";
-	echo "<a href='index.php'>Back to Main Page</a>";
+	echo "<a href='current.php'>Back to Client List Page</a>";
 	exit;
 }
 ?>
