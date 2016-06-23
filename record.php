@@ -142,7 +142,7 @@ if(!empty($_POST['active']) || !empty($_POST['n'])) // confirm that something wa
 
 		$_SESSION['currentClientWork'] = $_POST['active'];  	// for display use in endwork.php and logout.php
 
-		$fileInUse =  file("clientDirectory/" . $_POST['active'] . ".txt");
+		$fileInUse =  file("clientDirectory/" . urldecode($_POST['active']) . ".txt");
 
 		echo "<table border = '1'>";
 
@@ -211,6 +211,7 @@ if(!empty($_POST['active']) || !empty($_POST['n'])) // confirm that something wa
 		var_dump($_POST['active']);
 		var_dump($_SESSION['currentClientWork']);
 		var_dump($_POST['n']);
+
 	}else if(!empty($_POST['active']) && !empty($_POST['n']))  // both a new file and existing file are selected
 		
 		{
