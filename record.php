@@ -208,17 +208,9 @@ if(!empty($_POST['active']) || !empty($_POST['n'])) // confirm that something wa
 
 
 		</form>";
-		var_dump($_POST['active']);
-		var_dump($_SESSION['currentClientWork']);
-		var_dump($_POST['n']);
-
-	}else if(!empty($_POST['active']) && !empty($_POST['n']))  // both a new file and existing file are selected
 		
-		{
-			echo "You may only select an existing file or start a new one...not both.<br>";
-			echo "<a href='index.php'>Back to Main Page</a>";
-			exit;
-		}
+
+	}
 
 }else{ // nothing entered or selected
 
