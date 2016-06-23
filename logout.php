@@ -45,7 +45,7 @@ ob_start();
 	}	
 	session_destroy();
         
-        header('Location: index.php');
+        header('Location: current.php');
  		ob_end_flush();       
 ?>
 <!DOCTYPE html>
